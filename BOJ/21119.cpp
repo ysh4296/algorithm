@@ -4,19 +4,19 @@
 using namespace std;
 typedef long long LL;
 int N;
-LL ans[MAX] = {0,};
-LL c[19][2][2] = {0,}; // c [2^i][xi][yi]
+LL ans[MAX] = {0,}; //각 조합의 원소 개수
+LL c[19][2][2] = {0,}; // c [2^i][xi][yi]로 대응되는 집합
 int x[] = {0,0,1,1};
 int y[] = {0,1,0,1};
-LL A[MAX] = {0,};
-LL B[MAX] = {0,};
-LL power[18] = {0,};
-LL cal(LL a,LL b){
+LL A[MAX] = {0,}; //집합 A
+LL B[MAX] = {0,}; //집합 B
+LL power[18] = {0,}; //거듭제곱을 저장한 배열 power[i] == pow(2,i)
+LL cal(LL a,LL b){ // 입력된 A,B의 집합 index를 비트연산하여 ans속 집합 index번호를 찾아냄
     LL res = 0;
     for(int i = 0 ; i < N ; i++){
         res += c[i][(a&(1<<i)) == 0 ? 0 : 1][(b&(1<<i)) == 0 ? 0 : 1] * power[i];
     }
-    return res;
+    return res; // res == A,B의 집합 index의 조합에 연결될 ans의 집합 index
 }
 int main() {
     ios_base::sync_with_stdio();
@@ -37,12 +37,14 @@ int main() {
     }
     for(int i = 0 ; i < mv ; i++){
         cin >> B[i];
-        for(int j = 0 ; j < mv ; j++){
-            if(B[i]*A[j] != 0){
-                ans[cal(j,i)] += A[j]*B[i];
-            }        
+        if(B[i] != 0){
+            for(int j = 0 ; j < mv ; j++){
+                if(A[j] != 0){
+                    ans[cal(j,i)] += A[j]*B[i]; //A,B의 집합속 조합에 A[j]*B[i] != 0 이라면 조합에 대응한 ans[]의 index번호를 추적하여 결과입력
+                }        
+            }
         }
-    }
+    } // 이 함수의 시간복잡도는 O((2^N)^N) 즉 최대 60억번의 계산이 필요한 구성이다.
     for(int i = 0 ; i < mv ; i++){
         cout << ans[i] << " ";
     }
