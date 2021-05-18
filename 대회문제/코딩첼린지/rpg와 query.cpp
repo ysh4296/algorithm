@@ -33,17 +33,17 @@ vector<long long> solution(int n, int z, vector<vector<int>> roads, vector<long 
     while(!q.empty()){
         point cur = q.front(); q.pop();
         if(cur.coin >= MAX) continue;
-        if(dp[cur.city][cur.coin] <= cur.day) continue;
-        dp[cur.city][cur.coin] = cur.day;
         if(ans[cur.coin] > cur.day) {
             ans[cur.coin] = cur.day;
             for(int next_city = 0 ; next_city < n ; next_city++){ // type 3
                 if(next_city == cur.city) continue;
-                q.push(point(next_city,cur.coin,cur.day+1));
+                q.push(point(next_city, cur.coin, cur.day+1));
             }
         }
+        if(dp[cur.city][cur.coin] <= cur.day) continue;
+        dp[cur.city][cur.coin] = cur.day;
         for(point next_city : Edge[cur.city]){ //type 1
-            q.push(point(next_city.city,cur.coin + next_city.coin,cur.day+1));
+            q.push(point(next_city.city, cur.coin + next_city.coin, cur.day+1));
         }
     }
     for(int i = z ; i <= MAX ; i++){ // type 2
