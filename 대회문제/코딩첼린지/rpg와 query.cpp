@@ -52,11 +52,11 @@ vector<long long> solution(int n, int z, vector<vector<int>> roads, vector<long 
     }
     for(LL tcoin : queries){
         LL div = 0;
-        if(ans[tcoin%(MAX-1)] < 2555){
-            if(tcoin > MAX-1){
-                div = (tcoin-(MAX-1))/z;
+        if(ans[tcoin % (MAX-1)] < 2555){
+            if(tcoin >= MAX-1){
+                div = ((tcoin) - (tcoin%(MAX-1)))/z;
             }
-            answer.push_back(ans[tcoin] + div);
+            answer.push_back(ans[tcoin%(MAX-1)] + div);
         }
         else
             answer.push_back(-1);
