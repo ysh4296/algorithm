@@ -47,3 +47,8 @@ if __name__ == '__main__':
                 item_list[i+1][p] = item_list[i][p][:]
     print("the max value of napsack is : ",dp[n][cap])
     print("the optimized item is : ",item_list[n][cap])
+"""
+만약 파이썬에서 배열을 다른 배열로 할당하기를 원한다면 슬라이싱을 사용해서 값만을 복사해주는것이 필요하다
+배열에 배열을 할당한다면 주소를 복사해 두 주소가 같아지며 상호작용이 동일해지기 때문이다.
+큌소트는 얼핏보기에 매우 쉬워보이지만 기초 코드인 만큼 동작을 항상 머리속에 넣어두는것이 좋겠다.
+"""
