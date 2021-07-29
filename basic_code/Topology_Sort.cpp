@@ -25,3 +25,4 @@ else {//print sorted order
     cout << result[i] << "\n";
   }
 }
+//in this method we can find cycle in DAG
