@@ -1,5 +1,14 @@
 //GCD algorithm with Euclidean
-
+int GCD(int a,int b){//find gcd {a,b}
+  int temp;
+  if(a < b) swap(a,b);
+  while(b != 0){
+    temp = a%b;
+    a = b;
+    b = n;
+  }
+  return a;
+}
 
 
 //Euclidean extension
