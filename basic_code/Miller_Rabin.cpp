@@ -1,4 +1,4 @@
-int modular(int a, int k , int N){
+int modular(int a, int k , int N){// do fast modular with using binary architecture
     int res = 1;
     a %= N;
     while(k) {
