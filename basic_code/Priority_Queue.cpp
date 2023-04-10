@@ -12,7 +12,7 @@ struct Point {
         Point(int v, int r, int c) { // constructor
             value = v;
             row = r;
-            column = r;
+            column = c;
         } 
 };
 
