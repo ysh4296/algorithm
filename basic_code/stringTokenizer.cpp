@@ -1,16 +1,9 @@
-vector<string> stringTokenizer(string value,vector<char> target) {
-    int targetIndex = 0;
-    string temp = "";
-    vector<string> result;
-    for(int i = 0 ; i < value.length() ; i++) {
-        char cur = value.at(i);
-        if(cur == target[ti]) {
-            result.push_back(temp);
-            targetIndex++;
-            temp = "";
-        } else {
-            temp+=cur;
-        }
+vector<string> stringSplit(string input, char delimiter) {
+    vector<string> answer;
+    stringstream ss(input);
+    string temp;
+    while (getline(ss, temp, delimiter)) {
+        answer.push_back(temp);
     }
-    return result;
+    return answer;
 }
