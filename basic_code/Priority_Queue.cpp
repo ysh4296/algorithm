@@ -1,6 +1,6 @@
 struct cmp{
   bool operator()(int a ,int b){
-    return a > b;// make priority_queue in increasing order 
+    return a > b;// smaller value comes first
   }
 };
 
